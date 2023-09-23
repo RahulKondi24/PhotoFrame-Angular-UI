@@ -1,0 +1,38 @@
+<div class="container justify-content-center ">
+    <div class="row  justify-content-evenly m-3 p-3">
+        <div class="col-md-6 col-lg-5 col-sm-4">
+            <div class="card ">
+                <div class="card-body">
+                    <div class="card-img-actions">
+                        <img src="{{product.Productimage}}" class="card-img img-fluid" height="80" width="100"
+                            onerror="this.src='./assets/Images/1.jpg'">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5 col-sm-4">
+            <div class="card-body  ">
+                <div class="mb-2">
+                    <h3 class="font-weight-semibold text-uppercase mb-2">
+                        <b>{{product.Productname}}</b>
+                    </h3>
+                </div>
+                <h5 class="my-2"><strong><span class="text-secondary">M.R.P : </span><span class="text-danger">{{product.Productprice|currency:"INR"}}(-20%)</span></strong></h5>
+                <h6>Size : </h6>
+                <div class="my-2">
+                    <button class="btn btn-outline-secondary " (click)="mines()"><b>-</b></button>
+                    <input type="text" name="" id="" class="mx-1 px-1" style="width: 30px;" maxlength="1" [(ngModel)]="quntity">
+                    <button class="btn btn-outline-secondary" (click)="plus()"><b>+</b></button>
+                    <p class="text-success">{{quntity}} x {{product.Productprice}} your total quntity  <span class="text-warning"><b>{{quntity*product.Productprice|currency:"INR"}}</b></span></p>
+                </div>
+                <p class="">{{product.Productdescription}}</p>
+                <div class="row">
+                    <button type="button" class="btn btn-warning px-5 bg-cart m-1" (click)="Additem(product.Id)"><i class="fa fa-cart-plus mr-2"></i>
+                       <b>Add to cart</b></button>
+                    <button type="button" class="btn btn-danger px-5 bg-cart m-1" (click)="Additem(product.Id)" >
+                        <b>Buy now</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container p-2">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2 class="text-primary text-center"><i class="fa-solid fa-user-plus"></i>Sign Up</h2>
+            <hr>
+            <form [formGroup]="registerForm" >
+                <div class="p-2 row">
+                    <label class="col-sm-2 col-form-label">Fullname : </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" formControlName="fullname" name="fullname" id="fullname" placeholder="Enter your Fullname">
+                    </div>
+                </div>
+                <div class="p-2 row">
+                    <label class="col-sm-2 col-form-label">UserName : </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" formControlName="username" name="username" id="username" placeholder="Enter your Username">
+                    </div>
+                </div>
+                <div class="p-2 row">
+                    <label class="col-sm-2 col-form-label">Email : </label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" formControlName="email" name="email" id="email" placeholder="Enter your Email">
+                    </div>
+                </div>
+                <div class="p-2 row">
+                    <label class="col-sm-2 col-form-label">Mobile : </label>
+                    <div class="col-sm-10">
+                        <input type="tel" class="form-control" formControlName="mobilenumber" name="mobilenumber" id="mobilenumber"
+                            placeholder="Enter your Mobile Number">
+                    </div>
+                </div>
+                <div class="p-2 row">
+                    <label class="col-sm-2 col-form-label">Password : </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" formControlName="password" name="password" id="password" placeholder="Enter your Password">
+                    </div>
+                </div>
+                <div class="p-2 row justify-content-center">
+                    <button class=" btn btn-danger rounded-pill m-2 col-sm-4" (click)="cancel()">Cancel</button>
+                    <button class=" btn btn-success rounded-pill m-2 col-sm-4 " (click)="register()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

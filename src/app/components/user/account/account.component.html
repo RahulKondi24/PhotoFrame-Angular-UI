@@ -1,0 +1,119 @@
+<div class="bg-light">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-4">
+                <div class="container p-4 bg-white">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://t4.ftcdn.net/jpg/01/06/92/47/360_F_106924759_7qPPu6bZNN2O4al1ExdEWBdHUcpKMwuJ.jpg"
+                                height="80" width="80" class="rounded-circle">
+                        </div>
+                        <div class="col-6">
+                            <p>Hello,</p>
+                            <h4>{{Fullname}}</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="container p-4 bg-white">
+                    <div class="row pt-4  ">
+                        <div class="col-sm-5">
+                            <h4>Personal Information</h4>
+                        </div>
+                    </div>
+                    <div class="row pt-2 ">
+                        <label class="col-4  col-form-label">Fullname : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control py-2" type="text" *ngIf="isfullname==false" name="username"
+                                id="username" placeholder="Enter your Username" value={{uu.Fullname}} 
+                                aria-label="Disabled input example" disabled>
+                            <input class="form-control py-2" type="text" *ngIf="isfullname==true" name="username"
+                                id="username" placeholder="Enter your Username" [(ngModel)]="u.Fullname"
+                                aria-label="Disabled input example">
+
+                        </div>
+                        <div class="col-sm-4  my-1">
+                            <button class="btn btn-primary px-4" (click)="isedit(1)"
+                                *ngIf="isfullname==false&&isusername==false">Edit</button>
+                            <button class="btn btn-success px-4" *ngIf="isfullname==true&&isusername==true"
+                                (click)="save(1)">Save</button>
+                            <button class="btn btn-danger px-4 mx-1" *ngIf="isfullname==true&&isusername==true"
+                                (click)="cancel(1)">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="row pt-2 ">
+                        <label class="col-4  col-form-label">Username : </label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control py-2" *ngIf="isusername==false" name="username"
+                                id="username" placeholder="Enter your Username" value="{{uu.Username}}" disabled>
+
+                            <input class="form-control py-2" type="text" *ngIf="isusername==true" name="username"
+                                id="username" placeholder="Enter your Username" [(ngModel)]="u.Username"
+                                aria-label="Disabled input example">
+                        </div>
+                    </div>
+                    <div class="row pt-4  ">
+                        <div class="col-sm-4">
+                            <h4>Email Address
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row pt-2 ">
+                        <label class="col-4  col-form-label">Email : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control py-2" type="text" *ngIf="isemail==false" name="username"
+                                id="username" placeholder="Enter your Username" value="{{uu.Email}}"
+                                aria-label="Disabled input example" disabled>
+                            <input class="form-control py-2" type="text" *ngIf="isemail==true" name="username"
+                                id="username" placeholder="Enter your Username" [(ngModel)]="u.Email"
+                                aria-label="Disabled input example">
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-primary px-4" (click)="isedit(2)"
+                                *ngIf="isemail==false">Edit</button>
+                            <button class="btn btn-success px-4" *ngIf="isemail==true" (click)="save(2)">Save</button>
+                            <button class="btn btn-danger px-4 mx-1" *ngIf="isemail==true"
+                                (click)="cancel(2)">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="row pt-4  ">
+                        <div class="col-sm-4">
+                            <h4>Mobile Number
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row pt-2 ">
+                        <label class="col-4  col-form-label">Mobile Number : </label>
+                        <div class="col-sm-4">
+                            <input class="form-control py-2" type="number" *ngIf="ismobilenumber==false" name="username"
+                                id="username" placeholder="Enter your Username" value="{{uu.Mobilenumber}}"
+                                aria-label="Disabled input example" disabled>
+                            <input class="form-control py-2" type="number" *ngIf="ismobilenumber==true" name="username"
+                                id="username" placeholder="Enter your Username" [(ngModel)]="u.Mobilenumber"
+                                aria-label="Disabled input example">
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-primary px-4" (click)="isedit(3)"
+                                *ngIf="ismobilenumber==false">Edit</button>
+                            <button class="btn btn-success px-4" *ngIf="ismobilenumber==true"
+                                (click)="save(3)">Save</button>
+                            <button class="btn btn-danger px-4 mx-1" *ngIf="ismobilenumber==true"
+                                (click)="cancel(3)">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="pt-5">
+                        <h3>FAQs</h3>
+                        <h6>What happens when I update my email address (or mobile number)?</h6>
+                        <p>
+                            Your login email id (or mobile number) changes, likewise. You'll receive all your account
+                            related
+                            communication on your updated email address (or mobile number).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

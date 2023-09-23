@@ -1,0 +1,48 @@
+<div class="container p-4">
+  <div class="row justify-content-between">
+    <div class="col-sm-4">
+      <button class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#addmodel"><i
+          class="fa fa-user-plus px-1" aria-hidden="true"></i> Add User</button>
+      <button class="btn btn-info mx-1 px-4" (click)="DownloadPdf()"><i class="fa fa-download px-1"></i> PDF</button>
+    </div>
+    <div class="col-sm-4">
+      <select class="form-select form-select-sm"  aria-label="Default select example">
+        <option selected>-select-</option>
+        <option *ngFor="let item of Role" value={{item}}>{{item}}</option>
+      </select>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <table class="table table-bordered table-sm row-border hover" id="datatable">
+        <thead>
+          <tr>
+            <th class="p-2">Full Name</th>
+            <th class="p-2">User Name</th>
+            <th class="p-2">Email</th>
+            <th class="p-2">Mobile Number</th>
+            <th class="p-2">Role</th>
+            <th class="p-2 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let group of users">
+            <td class="p-2">{{group.Fullname}}</td>
+            <td class="p-2">{{group.Username}}</td>
+            <td class="p-2">{{group.Email}}</td>
+            <td class="p-2">{{group.Mobilenumber}}</td>
+            <td class="p-2">{{group.Role}}</td>
+            <td class="p-2 text-center">
+              <div class="container">
+                <button class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#editmodel"><i
+                    class="fa fa-pencil px-1" aria-hidden="true"></i> Edit</button>
+                <button class="btn btn-danger mx-1" data-bs-toggle="modal" data-bs-target="#deletemodel"><i
+                    class="fa fa-trash px-1" aria-hidden="true"></i>Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

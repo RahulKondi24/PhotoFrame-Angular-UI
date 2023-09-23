@@ -1,0 +1,6 @@
+.trtextarea {
+    border: none;
+    outline: none;
+    resize:none;
+    overflow:auto;
+}

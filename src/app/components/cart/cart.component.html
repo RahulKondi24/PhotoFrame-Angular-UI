@@ -1,0 +1,86 @@
+<div class="container my-2">
+    <div class="row  justify-content-between">
+        <div class="col-sm-3 ps-5">
+            <h3>Shopping Cart</h3>
+        </div>
+        <div class="col-sm-3 ps-5 text-center ">
+            <button class="btn btn-warning px-5 " (click)="RemoveAllitem(UserId)">Remove all</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngFor="let item of productlist let index i">
+        <div class="col-sm-3 align-self-center">
+            <div>
+                <div>
+                    <div>
+                        <img src="{{item.PRODUCTIMAGE}}" height="150" width="120"
+                            onerror="this.src='./assets/Images/1.jpg'">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 align-self-start">
+            <h2 class="font-weight-semibold mb-2 text-dark">
+                {{item.PRODUCTNAME}}
+            </h2>
+            Quntity : <span class="text-success"><b>{{item.Quntity}}</b></span><br>
+            Price : <span class="text-warning"><b>{{item.PRODUCTPRICE|currency:"INR"}}</b></span>
+            <!-- <p class="text-fluid text-dark text-justify">{{item.PRODUCTDESCRIPTION}}</p> -->
+        </div>
+        <div class="col-sm-3 align-self-center ">
+            <span> {{item.Quntity}} x {{item.PRODUCTPRICE|currency:"INR"}} <br><span>Total :</span> <span
+                    class="text-success"><b>{{item.Quntity*item.PRODUCTPRICE|currency:"INR"}}</b> </span> </span>
+        </div>
+        <div class="col-sm-3  align-self-center pt-2 text-center">
+            <button type="button" class="btn btn-danger px-5 bg-cart" (click)="Removeitem(item.CartID)"><i
+                    class="fa fa-trash mr-2"></i> Remove</button>
+        </div>
+        <hr class="my-2">
+    </div>
+    <div class="row  justify-content-end">
+        <div class="col-sm-2 ">
+            <span><b>Sub-Total : </b></span>
+            <div>items : <b class="text-danger">{{noofitems}}</b> </div>
+            <div>Delivary charges : <b class="text-danger"></b></div>
+            <hr>
+            <span><b>Total : </b></span>
+
+        </div>
+        <div class="col-sm-2 ">
+            <h4 class="text-danger">{{totalprice |currency:"INR"}}</h4>
+            <b class="text-success">{{charges|currency:"INR"}}</b>
+            <hr>
+            <h2 class="text-success">{{totalprice+charges |currency:"INR"}}</h2>
+        </div>
+        <div class="col-sm-2 ">
+            <button class="px-4 btn btn-primary" routerLink="/checkout">Checkout</button>
+        </div>
+    </div>
+
+    <!-- <div class="row mt-2">
+        <div class="col-md-4 col-lg-3 col-sm-4 my-2" *ngFor="let item of productlist">
+            <div class="card ">
+                <a routerLink="/productdetails/{{item.id}}" style="text-decoration: none; color: inherit;">
+                    <div class="card-body">
+                        <div class="card-img-actions">
+                            <img src="{{item.productimage}}" class="card-img img-fluid" height="80" width="100"
+                                onerror="this.src='./assets/Images/1.jpg'">
+                        </div>
+                    </div>
+                    <div class="card-body bg-light text-center">
+                        <div class="mb-2">
+                            <h6 class="font-weight-semibold mb-2">
+                                <a href="#" class="text-default mb-2" data-abc="true">{{item.productname}}</a>
+                            </h6>
+                            <p class="text-fluid">{{item.productdescription}}</p>
+                        </div>
+                        Quntity : <h3>{{item.quntity}}</h3>
+                        Price : <h3>{{item.productprice|currency:"INR"}}</h3>
+                        Total : <h3>{{item.quntity*item.productprice|currency:"INR"}}</h3>
+                        <button type="button" class="btn btn-danger px-5 bg-cart"><i class="fa fa-trash mr-2"></i> Remove</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div> -->
+</div>

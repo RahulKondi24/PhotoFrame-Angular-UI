@@ -1,0 +1,169 @@
+<div class="container p-4">
+    <div class="row justify-content-evenly">
+        <div class="col-sm-4">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmodel"><i
+                    class="fa fa-user-plus px-1"></i> Add Product</button>
+        </div>
+        <div class="col-sm-6">
+            <div class="row justify-content-end">
+                <div class="col-6 ">
+                    <input type="text" name="" class="form-control" id="" placeholder="Enter Product Name"
+                        [(ngModel)]="search">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <th class="p-1">Product Image</th>
+                <th class="p-1">Product Name</th>
+                <th class="p-1">Product Description</th>
+                <th class="p-1">Product Price</th>
+                <th class="p-1 text-center">Actions</th>
+            </tr>
+            <tr *ngFor="let item of list |filter:search" class>
+                <td class="p-1 ">
+                    <img src="{{item.Productimage}}" onerror="this.src='./assets/Images/1.jpg'"
+                        alt="./assets/Image/1.jpg" style="width: 100px;height: 100px;">
+                </td>
+                <td class="p-1">{{item.Productname}}</td>
+                <td class="p-1 ">
+                    <textarea value="{{item.Productdescription}}" class="trtextarea text-justify" cols="50" rows="3"
+                        readonly>
+                </textarea>
+                </td>
+                <td class="p-1">{{item.Productprice}}</td>
+                <td class="p-1 text-center">
+                    <div class="container">
+                        <button class="btn btn-warning mx-1" data-bs-toggle="modal" data-bs-target="#editmodel"
+                            (click)="assvaluesedit(item)"><i class="fa fa-pencil px-1"></i>Edit</button>
+                        <button class="btn btn-danger mx-1" (click)="removeproduct(item.Id)"><i
+                                class="fa fa-trash px-1"></i>Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal fade" id="addmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-warning">Add Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container p-2">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <form [formGroup]="productForm">
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Image : </label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control" (change)="onselectFile($event)"
+                                                 accept="image/png, image/gif, image/jpeg"
+                                                 formControlName="productimage" name="image" id="image" >
+                                        </div>
+                                    </div>
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Product Name : </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" 
+                                                formControlName="productname" [(ngModel)]="p.Productname" name="productname" id="productname"
+                                                placeholder="Enter your productname" >
+                                        </div>
+                                    </div>
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Product Description : </label>
+                                        <div class="col-sm-10">
+                                           <!-- <input type="text" class="form-control" 
+                                            formControlName="productdescription" cols="80" rows="5" name="productname" id="productname"
+                                            placeholder="Enter your productname" > -->
+                                            <textarea name="" id="" 
+                                                formControlName="productdescription" [(ngModel)]="p.Productdescription" cols="80" rows="5" ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Product Price : </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" 
+                                                formControlName="productprice" [(ngModel)]="p.Productprice"  name="productprice" id="productprice"
+                                                placeholder="Enter your Product Price">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-danger px-5" data-bs-dismiss="modal"
+                        (click)="cancel()">Close</button>
+                    <button type="button" class="btn btn-success px-5" data-bs-dismiss="modal"
+                        (click)="add()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editmodel" tabindex="-1" aria-labelledby="editmodelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-warning"><i class="fa fa-pencil px-1"></i> Edit Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="cancel()"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container p-2">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <form [formGroup]="productForm">
+                                    <input type="hidden" name="productid" formControlName="id" [(ngModel)]="p.Id">
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Image : </label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control" (change)="onselectFile($event)"
+                                                formControlName="productimage" accept="image/png, image/gif, image/jpeg"
+                                                name="image" id="image" >
+                                        </div>
+                                    </div>
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Product Name : </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" formControlName="productname"
+                                                name="productname" id="productname" placeholder="Enter your productname"
+                                                [(ngModel)]="p.Productname">
+                                        </div>
+                                    </div>
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Product Description : </label>
+                                        <div class="col-sm-10">
+                                            <textarea name="" id="" formControlName="productdescription" cols="80"
+                                                rows="5" [(ngModel)]="p.Productdescription"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 row">
+                                        <label class="col-sm-2 col-form-label">Product Price : </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" formControlName="productprice"
+                                                name="productprice" id="productprice"
+                                                placeholder="Enter your Mobile Number" [(ngModel)]="p.Productprice">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-danger px-5" data-bs-dismiss="modal"
+                        (click)="cancel()">Close</button>
+                    <button type="button" class="btn btn-success px-5" data-bs-dismiss="modal" (click)="edit()">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
